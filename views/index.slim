@@ -1,0 +1,12 @@
+html
+  head
+    title Sinatra
+  body
+    table
+      - for key, val in settings.graphs
+        tr
+          td = key
+          td
+            img src="/graph#{val}?#{opt_params}"
+
+
