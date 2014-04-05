@@ -1,4 +1,4 @@
-set :mapping, host: 'h', metric: 'm', start: 'st', graph: 'g', size: 'z', cluster: 'c', range: 'r'
+set :mapping, host: 'h', metric: 'm', start: 'st', graph: 'g', size: 'z', cluster: 'c', range: 'r', start_time: 'cs', end_time: 'ce'
 
 require 'net/http'
 require 'sinatra/reloader' if development?
@@ -13,11 +13,13 @@ get '/graph/*' do
   original_params.merge!(params.reject{ |k,v| ["splat", "captures"].include?(k)})
   server_params = Hash.new.tap do |new_hash|
     original_params.each do |k,v|
-      next unless settings.mapping.has_key? k.to_sym
-      new_hash[settings.mapping[k.to_sym].to_sym] = v
+      key = settings.mapping.fetch(k.to_sym, k) 
+      new_hash[key] = v
     end
   end
-  uri = URI(settings.server)
+  p original_params
+  segment = original_params.fetch("group", "ganglia")
+  uri = URI(settings.server + "#{segment}/graph.php")
   uri.query = to_params(server_params)
   p uri
   res = Net::HTTP.get_response(uri)

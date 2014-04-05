@@ -1,5 +1,6 @@
-server: "http://ganglia-prod/ganglia/graph.php" #"http://ganglia.wikimedia.org/latest/graph.php" 
+server: "http://ganglia.wikimedia.org/" #"http://ganglia.wikimedia.org/latest/graph.php" 
 graphs:
-  mem_free: '/metric/mem_free/size/large'
-  cpu_report: '/metric/cpu_report/size/large'
-  load_one: '/metric/load_one/size/large'
+  basic:
+    mem_free: '/metric/mem_free/size/large/group/latest'
+    cpu_report: '/metric/cpu_report/size/large/group/latest'
+    load_one: '/metric/load_one/size/large/group/latest'
