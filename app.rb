@@ -6,7 +6,8 @@ require "sinatra/config_file"
 require 'slim'
 
 set :static_cache_control, [:public, :max_age => 300]
-config_file 'lib/config.yml'
+
+config_file ENV["GANGLION_CONFIG"]
 
 get '/graph/*' do
   original_params = Hash[*params[:splat].first.split("/")]
@@ -17,11 +18,10 @@ get '/graph/*' do
       new_hash[key] = v
     end
   end
-  p original_params
   segment = original_params.fetch("group", "ganglia")
   uri = URI(settings.server + "#{segment}/graph.php")
   uri.query = to_params(server_params)
-  p uri
+  p uri.to_s
   res = Net::HTTP.get_response(uri)
   content_type 'image/png'
   stream do |out| 

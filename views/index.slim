@@ -1,6 +1,6 @@
 html
   head
-    title Sinatra
+    title Dashboard
     link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
     link rel="stylesheet" href="/bootstrap-datetimepicker.css"
     css:
@@ -8,24 +8,23 @@ html
         padding-right: 5px;
       }
   body
-    h2 Dashboard
-    div.panel.panel-default
-      div class="panel-heading" 
-        form.form-inline action='/dashboard' method='GET'
-          strong Filter
-          div.form-group
-            label.sr-only for="datetime-start" Start date 
-            input name="start_time" type="text" id="datetime-start" class="form_datetime" size="16" readonly='readonly' placeholder='Start date' value=params['start_time']
-          div.form-group
-            label.sr-only for="datetime-end" End date 
-            input name="end_time" type="text" id="datetime-end" class="form_datetime" size="16" readonly='readonly' placeholder='End date' value=params['end_time']
-          button.btn.btn-default type="submit" submit
-      div class="panel-body"
-        table.table
-          - for group_name, mapping in settings.graphs
-            tr
-              - for key, val in mapping
-                td
+    div.well.well-sm
+      form.form-inline action='/dashboard' method='GET'
+        strong Filter
+        div.form-group
+          label.sr-only for="datetime-start" Start date 
+          input name="start_time" type="text" id="datetime-start" class="form_datetime" size="16" readonly='readonly' placeholder='Start date' value=params['start_time']
+        div.form-group
+          label.sr-only for="datetime-end" End date 
+          input name="end_time" type="text" id="datetime-end" class="form_datetime" size="16" readonly='readonly' placeholder='End date' value=params['end_time']
+        button.btn.btn-default type="submit" submit
+    div class="panel-body"
+      table.table
+        - for group_name, mapping in settings.graphs
+          tr
+            - for key, val in mapping
+              td
+                div
                   img src="/graph#{val}?#{opt_params}"
     script src="//code.jquery.com/jquery-1.11.0.min.js"
     script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"

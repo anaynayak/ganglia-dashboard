@@ -1,0 +1,20 @@
+server: "http://ganglia.wikimedia.org/" #"http://ganglia.wikimedia.org/latest/graph.php" 
+graphs:
+  mem_app_servers:
+    mw1018: '/metric/mem_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1018.eqiad.wmnet'
+    mw1019: '/metric/mem_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1019.eqiad.wmnet'
+    mw1020: '/metric/mem_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1020.eqiad.wmnet'
+    mw1021: '/metric/mem_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1021.eqiad.wmnet'
+    mw1022: '/metric/mem_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1022.eqiad.wmnet'
+  cpu_app_servers:
+    mw1018: '/metric/cpu_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1018.eqiad.wmnet'
+    mw1019: '/metric/cpu_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1019.eqiad.wmnet'
+    mw1020: '/metric/cpu_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1020.eqiad.wmnet'
+    mw1021: '/metric/cpu_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1021.eqiad.wmnet'
+    mw1022: '/metric/cpu_report/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1022.eqiad.wmnet'
+  aps_app_servers:
+    mw1018: '/metric/ap_rps/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1018.eqiad.wmnet'
+    mw1019: '/metric/ap_rps/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1019.eqiad.wmnet'
+    mw1020: '/metric/ap_rps/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1020.eqiad.wmnet'
+    mw1021: '/metric/ap_rps/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1021.eqiad.wmnet'
+    mw1022: '/metric/ap_rps/size/small/group/latest/cluster/Application%20servers%20eqiad/host/mw1022.eqiad.wmnet'
