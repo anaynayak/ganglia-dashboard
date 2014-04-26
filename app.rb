@@ -23,6 +23,7 @@ get '/graph/*' do
   uri.query = to_params(server_params)
   p uri.to_s
   res = Net::HTTP.get_response(uri)
+  cache_control :public, :must_revalidate, :max_age => 600
   content_type 'image/png'
   stream do |out| 
     out << res.body
