@@ -12,20 +12,23 @@ html
       form.form-inline action='/dashboard' method='GET'
         strong Filter
         div.form-group
-          label.sr-only for="datetime-start" Start date 
+          label.sr-only for="datetime-start" Start date
           input name="start_time" type="text" id="datetime-start" class="form_datetime" size="16" readonly='readonly' placeholder='Start date' value=params['start_time']
         div.form-group
-          label.sr-only for="datetime-end" End date 
+          label.sr-only for="datetime-end" End date
           input name="end_time" type="text" id="datetime-end" class="form_datetime" size="16" readonly='readonly' placeholder='End date' value=params['end_time']
+        - for name, val in params.select{|k,v| !%w(end_time start_time).include?(k)}
+          input type="hidden" value="#{val}" name="#{name}"
         button.btn.btn-default type="submit" submit
     div class="panel-body"
       table.table
         - for group_name, mapping in settings.graphs
           tr
             - for key, val in mapping
-              td
-                div
-                  img src="/graph#{val}?#{opt_params}"
+              - if params['filter'].nil? || val.include?(params['filter'])
+                td
+                  div
+                    img src="/graph#{val}?#{opt_params}"
     script src="//code.jquery.com/jquery-1.11.0.min.js"
     script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
     script src="/bootstrap-datetimepicker.min.js"
