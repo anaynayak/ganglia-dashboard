@@ -1,7 +1,8 @@
-Tumor
-========
+Ganglia Dashboard
+=================
 
-Having a hard time trying to get Ganglia views to work? well then Tumor is just what the doctor ordered.
+An alternative to Ganglia views.
+
 Copy config.example.yml to config.yml and tweak it based on your Ganglia setup.
 
 #### Why on earth would you build this?
@@ -25,4 +26,4 @@ open http://localhost:5600/dashboard
 * Generate a PDF report by running `thor ganglion:export`
 
 #### Example
-![](https://github.com/anaynayak/tumor/raw/master/images/tumor.png)
+![](https://github.com/anaynayak/ganglia-dashboard/raw/master/images/gangliadashboard.png)
